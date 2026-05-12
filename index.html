@@ -24,27 +24,78 @@
     <p class="text-[10px] uppercase tracking-[0.3em] text-gray-500 font-bold">Masa Madre • Despacho Artesanal</p>
 </header>
 
-    <main class="flex-grow p-6 space-y-8">
+    <main class="flex-grow p-6 space-y-12">
         
         <section>
-            <h2 class="text-2xl mb-4 border-b border-black inline-block">Nuestras Hogazas</h2>
-            <div class="space-y-6">
-                <div class="product-card bg-white rounded-2xl p-4 flex flex-col shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1585478259715-876a6a81fc08?q=80&w=500" class="w-full h-40 object-cover rounded-xl mb-4" alt="Pan">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3 class="font-bold text-lg leading-tight text-gray-800">Hogaza de Semillas</h3>
-                            <p class="text-xs text-gray-500 mt-1 uppercase tracking-tighter">Integral y 7 semillas • 800g</p>
+            <h2 class="text-2xl mb-6 border-b-2 border-black inline-block pr-4">Nuestras Hogazas</h2>
+            <div class="grid gap-8">
+                
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow-sm">
+                    <img src="img/hogaza-semillas.jpg" class="w-full h-56 object-cover" alt="Hogaza Semillas">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-xl uppercase tracking-tighter">Hogaza Semillas</h3>
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm font-bold">$4.500</span>
                         </div>
-                        <span class="font-bold text-lg">$4.500</span>
+                        <p class="text-sm text-gray-500 leading-relaxed mb-4">Masa madre pura, 24hs de fermentación fría y un mix de 7 semillas tostadas.</p>
+                        <button onclick="agregar('Hogaza Semillas', 4500)" class="btn-add w-full py-4 rounded-2xl font-bold uppercase text-xs tracking-[0.2em]">Añadir al carrito</button>
                     </div>
-                    <button onclick="agregar('Hogaza Semillas', 4500)" class="btn-add w-full mt-4 py-3 rounded-xl font-bold uppercase text-xs tracking-widest">Añadir al pedido</button>
                 </div>
+
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow-sm">
+                    <img src="img/hogaza-campo.jpg" class="w-full h-56 object-cover" alt="Hogaza de Campo">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-xl uppercase tracking-tighter">Pan de Campo</h3>
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm font-bold">$4.000</span>
+                        </div>
+                        <p class="text-sm text-gray-500 leading-relaxed mb-4">Corteza rústica y miga bien alvéolada. Ideal para tostadas o sándwiches.</p>
+                        <button onclick="agregar('Pan de Campo', 4000)" class="btn-add w-full py-4 rounded-2xl font-bold uppercase text-xs tracking-[0.2em]">Añadir al carrito</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-2xl mb-6 border-b-2 border-[#d4a373] inline-block pr-4 text-[#d4a373]">Ediciones Especiales</h2>
+            <div class="grid gap-8">
+                
+                <div class="product-card bg-black text-white rounded-3xl overflow-hidden shadow-xl">
+                    <img src="img/caja-patria.jpg" class="w-full h-56 object-cover opacity-80" alt="Caja Patria">
+                    <div class="p-5 border-t border-gray-800">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-xl uppercase tracking-tighter">Caja Patria 🇦🇷</h3>
+                            <span class="bg-[#d4a373] text-black px-3 py-1 rounded-full text-sm font-bold">$12.000</span>
+                        </div>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-4">Pastelitos hojaldrados, chipá de masa madre y bizcochitos de grasa real.</p>
+                        <button onclick="agregar('Caja Patria', 12000)" class="bg-white text-black w-full py-4 rounded-2xl font-bold uppercase text-xs tracking-[0.2em]">Lo quiero para el 25</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="pb-20">
+            <h2 class="text-2xl mb-6 border-b-2 border-black inline-block pr-4">Para el Mate</h2>
+            <div class="grid grid-cols-2 gap-4">
+                
+                <div class="product-card bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-sm uppercase">Criollitos (1/4kg)</h3>
+                    <p class="text-lg font-serif mt-1 mb-3">$2.500</p>
+                    <button onclick="agregar('Criollitos 1/4kg', 2500)" class="btn-add w-full py-2 rounded-xl text-[10px] font-bold uppercase">Sumar</button>
+                </div>
+
+                <div class="product-card bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-sm uppercase">Bizcochitos (1/4kg)</h3>
+                    <p class="text-lg font-serif mt-1 mb-3">$2.300</p>
+                    <button onclick="agregar('Bizcochitos 1/4kg', 2300)" class="btn-add w-full py-2 rounded-xl text-[10px] font-bold uppercase">Sumar</button>
+                </div>
+
             </div>
         </section>
 
     </main>
-
     <div id="cart-ui" class="fixed bottom-6 left-6 right-6 bg-black text-white p-5 rounded-2xl shadow-2xl flex justify-between items-center hidden z-50">
         <div>
             <p id="items-count" class="text-[10px] uppercase text-gray-400">0 productos</p>
