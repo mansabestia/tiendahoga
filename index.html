@@ -3,53 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hoga - Micropanadería</title>
+    <title>Hoga | Micropanadería</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Aquí podés cambiar tus colores de marca */
-        :root {
-            --color-primario: #1a1a1a; /* Gris muy oscuro/Negro */
-            --color-secundario: #f5f5f0; /* Crema/Hueso */
-            --color-acento: #d4a373; /* Un tono madera/pan */
-        }
-        body { background-color: var(--color-secundario); color: var(--color-primario); font-family: sans-serif; }
-        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        body { font-family: 'Inter', sans-serif; background-color: #fcfcf9; color: #1a1a1a; }
+        h1, h2 { font-family: 'DM Serif Display', serif; }
+        .product-card { transition: transform 0.2s; border: 1px solid #e2e2d5; }
+        .product-card:active { transform: scale(0.98); }
+        .btn-add { background-color: #1a1a1a; color: white; transition: all 0.3s; }
+        .btn-add:hover { background-color: #d4a373; }
     </style>
 </head>
-<body class="p-4 pb-24">
+<body class="max-w-md mx-auto min-h-screen flex flex-col">
 
-    <header class="text-center my-8">
-        <h1 class="text-4xl font-bold tracking-tighter italic">Hoga</h1>
-        <p class="text-sm uppercase tracking-widest">Micropanadería de Masa Madre</p>
+    <header class="pt-12 pb-8 px-6 text-center border-b border-gray-100">
+        <h1 class="text-5xl mb-2 italic">Hoga</h1>
+        <p class="text-[10px] uppercase tracking-[0.3em] text-gray-500 font-bold">Masa Madre • Despacho Artesanal</p>
     </header>
 
-    <div id="productos" class="grid gap-6 max-w-md mx-auto">
-        <div class="card p-4 flex justify-between items-center">
-            <div>
-                <h3 class="font-bold text-lg">Hogaza Semillas</h3>
-                <p class="text-sm text-gray-500">Masa madre, mix de 7 semillas.</p>
-                <span class="font-bold text-black">$4500</span>
+    <main class="flex-grow p-6 space-y-8">
+        
+        <section>
+            <h2 class="text-2xl mb-4 border-b border-black inline-block">Nuestras Hogazas</h2>
+            <div class="space-y-6">
+                <div class="product-card bg-white rounded-2xl p-4 flex flex-col shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1585478259715-876a6a81fc08?q=80&w=500" class="w-full h-40 object-cover rounded-xl mb-4" alt="Pan">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-bold text-lg leading-tight text-gray-800">Hogaza de Semillas</h3>
+                            <p class="text-xs text-gray-500 mt-1 uppercase tracking-tighter">Integral y 7 semillas • 800g</p>
+                        </div>
+                        <span class="font-bold text-lg">$4.500</span>
+                    </div>
+                    <button onclick="agregar('Hogaza Semillas', 4500)" class="btn-add w-full mt-4 py-3 rounded-xl font-bold uppercase text-xs tracking-widest">Añadir al pedido</button>
+                </div>
             </div>
-            <button onclick="agregarAlCarrito('Hogaza Semillas', 4500)" class="bg-black text-white px-4 py-2 rounded-lg">+</button>
-        </div>
+        </section>
 
-        <div class="card p-4 flex justify-between items-center">
-            <div>
-                <h3 class="font-bold text-lg">Caja Patria</h3>
-                <p class="text-sm text-gray-500">Pastelitos, chipá y pan de campo.</p>
-                <span class="font-bold text-black">$12000</span>
-            </div>
-            <button onclick="agregarAlCarrito('Caja Patria', 12000)" class="bg-black text-white px-4 py-2 rounded-lg">+</button>
-        </div>
-    </div>
+    </main>
 
-    <div id="barra-carrito" class="fixed bottom-0 left-0 right-0 bg-white border-t p-4 flex justify-between items-center hidden shadow-2xl">
+    <div id="cart-ui" class="fixed bottom-6 left-6 right-6 bg-black text-white p-5 rounded-2xl shadow-2xl flex justify-between items-center hidden z-50">
         <div>
-            <p class="text-xs uppercase">Total estimado</p>
-            <p id="total-precio" class="text-xl font-bold">$0</p>
+            <p id="items-count" class="text-[10px] uppercase text-gray-400">0 productos</p>
+            <p id="total-price" class="text-xl font-bold font-serif">$0</p>
         </div>
-        <button onclick="enviarPedido()" class="bg-green-600 text-white px-6 py-3 rounded-xl font-bold">
-            Pedir por WhatsApp
+        <button onclick="enviarPedido()" class="bg-[#d4a373] text-black px-6 py-3 rounded-xl font-black text-sm uppercase tracking-tighter">
+            Confirmar por WhatsApp
         </button>
     </div>
 
@@ -57,32 +57,24 @@
         let carrito = [];
         let total = 0;
 
-        function agregarAlCarrito(nombre, precio) {
+        function agregar(nombre, precio) {
             carrito.push({nombre, precio});
             total += precio;
-            actualizarInterfaz();
-        }
-
-        function actualizarInterfaz() {
-            const barra = document.getElementById('barra-carrito');
-            if(carrito.length > 0) barra.classList.remove('hidden');
-            document.getElementById('total-precio').innerText = `$${total}`;
+            document.getElementById('cart-ui').classList.remove('hidden');
+            document.getElementById('items-count').innerText = `${carrito.length} productos`;
+            document.getElementById('total-price').innerText = `$${total}`;
         }
 
         function enviarPedido() {
-            const numeroTel = "54911XXXXXXXX"; // PONÉ TU NÚMERO ACÁ (sin el +)
-            const alias = "HOGA.MASAMADRE"; // TU ALIAS
+            const alias = "HOGA.ALIMENTO.REAL"; // <--- CAMBIÁ TU ALIAS ACÁ
+            const nro = "549XXXXXXXXXX"; // <--- TU WHATSAPP CON CODIGO DE AREA SIN EL +
             
-            let mensaje = "Hola Hoga! Me gustaría hacer este pedido:\n\n";
-            carrito.forEach(item => {
-                mensaje += `- ${item.nombre} ($${item.precio})\n`;
-            });
-            mensaje += `\n*Total: $${total}*\n\n`;
-            mensaje += `¿Me pasás los datos para la transferencia?\n`;
-            mensaje += `_Alias: ${alias}_`;
-
-            const url = `https://wa.me/${numeroTel}?text=${encodeURIComponent(mensaje)}`;
-            window.open(url, '_blank');
+            let msg = `🥖 *PEDIDO HOGA*\n------------------\n`;
+            carrito.forEach(i => msg += `• ${i.nombre}\n`);
+            msg += `------------------\n*TOTAL: $${total}*\n\n`;
+            msg += `Pago por transferencia al Alias:\n*${alias}*`;
+            
+            window.open(`https://wa.me/${nro}?text=${encodeURIComponent(msg)}`);
         }
     </script>
 </body>
