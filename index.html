@@ -6,30 +6,20 @@
     <title>Hoga | Micropanadería</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-    <<style>
-    @font-face {
-        font-family: 'GothamOffice';
-        src: url('fonts/gothamoffice-regular.otf') format('truetype'); 
-        font-weight: normal;
-        font-style: normal;
-    }
-
-    .tagline {
-        font-family: 'GothamOffice', sans-serif;
-        backgound-color: #FFBA08;
-        color: #03071E;
-        letter-spacing: 0.4em;
-        text-transform: uppercase;
-        margin-top: 1rem; /* mt-4 */
-        font-size: 11px;
-    }
-</style>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #FFBA08; color: #1a1a1a; }
+        h1, h2 { font-family: 'DM Serif Display', serif; }
+        .product-card { transition: transform 0.2s; border: 1px solid #e2e2d5; }
+        .product-card:active { transform: scale(0.98); }
+        .btn-add { background-color: #1a1a1a; color: white; transition: all 0.3s; }
+        .btn-add:hover { background-color: #FFBA08; }
+    </style>
 </head>
 <body class="max-w-md mx-auto min-h-screen flex flex-col">
 
     <header class="pt-10 pb-6 px-6 text-center">
     <div class="flex justify-center mb-2">
-        <img src="./img/hoga-isologotipo.png" alt="Hoga Logo" class="h-25 w-auto object-contain">
+        <img src="./img/hoga-logotipo.png" alt="Hoga Logo" class="h-25 w-auto object-contain">
     </div>
   <p class="mt-4 text-[11px] uppercase tracking-[0.4em] text-[#03071E] font-medium">
     COME · PAN · FRESCO
