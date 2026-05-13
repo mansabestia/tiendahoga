@@ -6,14 +6,25 @@
     <title>Hoga | Micropanadería</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #FFBA08; color: #1a1a1a; }
-        h1, h2 { font-family: 'DM Serif Display', serif; }
-        .product-card { transition: transform 0.2s; border: 1px solid #e2e2d5; }
-        .product-card:active { transform: scale(0.98); }
-        .btn-add { background-color: #1a1a1a; color: white; transition: all 0.3s; }
-        .btn-add:hover { background-color: #FFBA08; }
-    </style>
+    <<style>
+    @font-face {
+        font-family: 'GothamOffice';
+        /* La ruta ahora incluye la carpeta fonts */
+        src: url('fonts/gothamoffice-regular.otf') format('truetype'); 
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    /* Aplicamos el color deep blue y la fuente a tu tagline */
+    .tagline {
+        font-family: 'GothamOffice', sans-serif;
+        color: #03071E;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        margin-top: 1rem; /* mt-4 */
+        font-size: 11px;
+    }
+</style>
 </head>
 <body class="max-w-md mx-auto min-h-screen flex flex-col">
 
